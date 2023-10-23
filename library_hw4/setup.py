@@ -12,7 +12,7 @@ def get_requirements(requirements_path='requirements.txt'):
 
 
 setup(
-    name='homework4',
+    name='library_hw4',
     version=library_hw4.__version__,
     description='homework4',
     author='Andrew, Mariam,Daniela',
