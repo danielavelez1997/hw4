@@ -2,6 +2,9 @@
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import roc_auc_score
+
 class split_data:
 
     def __init__(self,file_path,test_size,random_state):
@@ -73,4 +76,28 @@ class EthnicityTransformer(FeatureTransformer):
         data['ethnicity'] = data['ethnicity'].map(self.ethnicity)
         return data
 
+class Model():
+    def __init__(self, feature_columns, target_column, params=None):
+        print('initializing class')
+        self.__feature_columns = feature_columns
+        self.__target_column = target_column
+        self.__params = params
+        if self.__params != None:
+            self.model = RandomForestClassifier(n_estimators=self.__params['n_estimators'], random_state=42)
+        else:
+            self.model = RandomForestClassifier(n_estimators=100, random_state=42)
+    
+    def train(self, train_data):
+        self.model.fit(train_data[self.__feature_columns], train_data[self.__target_column])        
 
+    def predict(self, df):
+        return self.model.predict_proba(df[self.__feature_columns])[:,1]
+
+    def get_accuracy(self, y_test, y_pred):
+        return roc_auc_score(y_test, y_pred)
+
+if __name__ == '__main__':
+    split_data_class = split_data()
+    split_data_class.load_data()
+
+#send a email to Roger about primary methods
