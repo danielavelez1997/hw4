@@ -32,24 +32,15 @@ class split_data:
 
 #%%
 
-class RemoveNaN:
-    def __init__(self, columns):
+class preprocessor:
+    def __init__(self, columns,columns_fill):
         self.columns = columns
+        self.columns_fill = columns_fill
 
     def remove_nan_rows(self, data):
         data_cleaned = data.dropna(subset=self.columns)
         return data_cleaned
-
-
-
-# %%
-
-import pandas as pd
-
-class fill_Nan:
-    def __init__(self, columns_fill):
-        self.columns_fill = columns_fill
-       
+    
     def fill_nan_with_mean(self, data):
        
         # Fill NaN values with the mean values
