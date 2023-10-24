@@ -1,4 +1,5 @@
 # hw4
+Members of the group: Mariam Sargsyan, Andrew Bennett, Daniela Velez
 In this exercise you will create another library and practice object oriented programming and the use of classes.
 For this exercise divide yourself in groups of 2-3 students (same or different from previous homeworks).
 For this project each of the components of the group should do at least one commit. Pay attention to the
