@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import roc_auc_score
 
 
-class preprocessor:
+class Preprocessor:
     def __init__(self, columns,columns_fill):
         self.columns = columns
         self.columns_fill = columns_fill
@@ -24,26 +24,3 @@ class preprocessor:
         return data_filled
 
 
-# %%
-from abc import ABC, abstractmethod
-
-class FeatureTransformer(ABC):
-    @abstractmethod
-    def transform(self, data):
-        pass
-
-class GenderTransformer(FeatureTransformer):
-    def __init__(self, gender):
-        self.gender = gender
-
-    def transform(self, data):
-        data['gender'] = data['gender'].map(self.gender)
-        return data
-
-class EthnicityTransformer(FeatureTransformer):
-    def __init__(self, ethnicity):
-        self.ethnicity = ethnicity
-
-    def transform(self, data):
-        data['ethnicity'] = data['ethnicity'].map(self.ethnicity)
-        return data

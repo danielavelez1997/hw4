@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import roc_auc_score
 
-class split_data:
+class Split_data:
 
     def __init__(self,file_path,test_size,random_state):
         self.file_path=file_path
