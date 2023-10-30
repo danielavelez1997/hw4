@@ -25,3 +25,16 @@ def test_get_day_month_year():
     assert out.month.values==exp_out.month.values
     assert out.year.values==exp_out.year.values
 
+def test_compute_distance():
+    geoCoordiSets = [((41.23,23.5), (41.5, 23.4)), ((52.38, 20.1),(52.3, 17.8))]
+    exp_out=[31.131865222052042, 157.005827868894]
+    out=compute_distance(geoCoordiSets)
+
+    assert out==exp_out    
+
+def test_sum_general_int_list():
+    list_1=[[2], 3, [[1,2],5]]
+    exp_out=13
+    out=sum_general_int_list(list_1)
+
+    assert out==exp_out
