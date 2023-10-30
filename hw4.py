@@ -57,12 +57,12 @@ class Patient:
 #    ['fever', 'cough', 'anosmia']
 
     def has_covid(self):
-        if hasattr(self, 'test_data') and 'covid' in self.tests:
-            return 0.99 if self.tests['covid'] else 0.01
+        if hasattr(self, 'test_data') and 'covid' in self.test_data:
+            return 0.99 if self.test_data['covid'] else 0.01
         probability = 0.05
         key_symptoms = ['fever', 'cough', 'anosmia']
-        for symptom in key_symptoms:
-            if symptom in self.symptoms:
+        for symptom in self.symptoms:
+            if symptom.lower() in key_symptoms:
                 probability += 0.1
         return probability
 
@@ -106,8 +106,8 @@ class Deck:
         if not self.cards:
             print("Deck is empty!")
             return None
-        cards = self.cards.pop()
-        print(cards)
+        return self.cards.pop()
+        
 
 
 ###################
@@ -178,3 +178,7 @@ class Circle(PlaneFigure):
         return 2 * math.pi * self.radius
     def compute_surface(self):
         return math.pi * self.radius ** 2
+    
+circle = Circle(4)
+circle.compute_perimeter()
+circle.compute_surface()
