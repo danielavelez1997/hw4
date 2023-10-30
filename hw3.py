@@ -8,8 +8,13 @@
 
 from functools import reduce
 
-s=["Simba and Nala are lions.", "I laugh in the face of danger.","Hakuna matata", "Timon, Pumba and Simba are friends, but Simba could eat the other two."]
-sum(map(lambda sentence: sum(map(lambda x: 1 if 'Simba' in x else 0,sentence.split())), s))  
+def count_simba(word,sentence):
+    return sum(map(lambda sentence: sum(map(lambda x: 1 if word in x else 0,sentence.split())), sentence)) 
+
+word= "Simba"
+sentence=["Simba and Nala are lions.", "I laugh in the face of danger.","Hakuna matata", "Timon, Pumba and Simba are friends, but Simba could eat the other two."]
+
+count_simba(word,sentence)
 
 #%%
 # 2)
@@ -20,7 +25,7 @@ sum(map(lambda sentence: sum(map(lambda x: 1 if 'Simba' in x else 0,sentence.spl
 # day, month, and year.
 # 
 import pandas as pd
-from datetime import date
+from datetime import datetime
 
 
 def get_day_month_year(my_date):
@@ -31,6 +36,9 @@ def get_day_month_year(my_date):
     edited_data= pd.DataFrame(data)
     return edited_data 
 
+dates = [datetime(2023, 10, 29)]
+result = get_day_month_year(dates)
+print(result)
 
 #%%
 # 3) 
@@ -67,18 +75,18 @@ print(compute_distance(geoCoordiSets),"unit in kilometer")
 # the result should be 13
 #
 
-def recursive_Sum(integerSets):
+def sum_general_int_list(integerSets):
     sum = 0
     for integerList in integerSets:
         # if is int type, we return and sum together
         if type(integerList) == int: sum += integerList
 
         #else is a nested List, we recursive deep down
-        else: sum += recursive_Sum(integerList)
+        else: sum += sum_general_int_list(integerList)
     return sum
 
 
 integerNestedList = [[2], 4, 5, [1, [2], [3, 5, [7,8]], 10], 1]
-print("integerNestedList sum is: ", recursive_Sum(integerNestedList))
+print("integerNestedList sum is: ", sum_general_int_list(integerNestedList))
 list_1=[[2], 3, [[1,2],5]]
-print("list_1 sum is: ", recursive_Sum(list_1))
+print("list_1 sum is: ", sum_general_int_list(list_1))
