@@ -72,4 +72,53 @@ def test_draw_from_deck():
     assert drawn_card is not None
 
 
+def test_triangle_init():
+    triangle= Triangle(3.0, 4.0, 5.0, 4.0)
+    print(triangle.c1)
+    assert triangle.base==3.0
+    assert triangle.c1==4.0
+    assert triangle.c2==5.0
+    assert triangle.h==4.0
 
+
+def test_triangle_perimeter():
+    triangle = Triangle(3.0, 4.0, 5.0, 4.0)
+    assert triangle.compute_perimeter()==12
+
+def test_triangle_surface():
+    triangle = Triangle(3.0, 4.0, 5.0, 4.0)
+    assert triangle.compute_surface()==6
+def test_rectangle_init():
+    rectangle=Rectangle(2.0,3.0)
+    assert rectangle.a==2
+    assert rectangle.b==3
+
+def test_rectangle_perimeter():
+    rectangle = Rectangle(2.0, 3.0)
+    assert rectangle.compute_perimeter()==10
+
+def test_rectangle_surface():
+    rectangle = Rectangle(2.0, 3.0)
+    assert rectangle.compute_surface()==6
+
+def test_circle_init():
+    circle=Circle(4)
+    assert circle.radius==4    
+
+def test_circle_perimeter():
+    circle = Circle(4.0)
+    assert circle.compute_perimeter()==25.132741228718345
+
+def test_circle_surface():
+    circle = Circle(4.0)
+    assert circle.compute_surface()==50.26548245743669
+
+# def test_compute_perimeter_abstract_method():
+#     with pytest.raises(NotImplementedError):
+#         figure = PlaneFigure()
+#         #figure.compute_perimeter()
+
+# def test_compute_surface_abstract_method():
+#     with pytest.raises(NotImplementedError):
+#         figure = PlaneFigure()
+#         #figure.compute_surface()
